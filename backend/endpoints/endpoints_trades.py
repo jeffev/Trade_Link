@@ -71,12 +71,35 @@ def obter_trades_endpoint():
 
 @endpoint_app.route('/api/trades/<int:trade_id>', methods=['GET'])
 def obter_trade_por_id_endpoint(trade_id):
-    trade = obter_trade_por_id(trade_id)
-    if trade:
-        trade_json = {'id': trade.id, 'data': str(trade.Data), 'ativo': trade.Ativo, 'observacao': trade.Observacao}
-        return jsonify({'trade': trade_json})
-    else:
-        return jsonify({'message': 'Trade não encontrado'}), 404
+    try:
+        trade = obter_trade_por_id(trade_id)
+        if trade:
+            trade_json = {
+                'id': trade.id,
+                'data': str(trade.Data),
+                'duracao': trade.Duracao,
+                'ativo': trade.Ativo,
+                'tipo': trade.Tipo,
+                'qtde': trade.Qtde,
+                'direction': trade.Direction,
+                'tendencia': trade.Tendencia,
+                'sentimento': trade.Sentimento,
+                'execucao': trade.Execucao,
+                'erro': trade.Erro,
+                'timeframe': trade.TimeFrame,
+                'setup': trade.Setup,
+                'pontos': trade.Pontos,
+                'valor': trade.Valor,
+                'percentual': trade.Percentual,
+                'imagem': trade.Imagem,
+                'observacao': trade.Observacao
+            }
+            return jsonify({'trade': trade_json})
+        else:
+            return jsonify({'error': 'Trade não encontrado'}), 404
+    except Exception as e:
+        return jsonify({'error': f'Erro ao processar a requisição: {str(e)}'}), 500
+
 
 @endpoint_app.route('/api/trades/<int:trade_id>', methods=['PUT'])
 def atualizar_trade_endpoint(trade_id):

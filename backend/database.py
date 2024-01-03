@@ -4,6 +4,9 @@ from backend.entities.entidade_trade import Base
 import os
 from dotenv import load_dotenv
 
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
+
 # Configurações de conexão com o banco de dados PostgreSQL
 db_config = {
     'dbname': os.getenv('DB_NAME'),
