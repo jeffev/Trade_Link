@@ -6,6 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 from backend.endpoints.endpoints_trades import criar_trade_endpoint, obter_trades_endpoint, obter_trade_por_id_endpoint, atualizar_trade_endpoint, excluir_trade_endpoint
+from backend.database import criar_tabelas
 
 # Configurações de conexão com o banco de dados PostgreSQL
 db_config = {
@@ -32,8 +33,11 @@ server.add_url_rule('/api/trades/<int:trade_id>', view_func=obter_trade_por_id_e
 server.add_url_rule('/api/trades/<int:trade_id>', view_func=atualizar_trade_endpoint, methods=['PUT'])
 server.add_url_rule('/api/trades/<int:trade_id>', view_func=excluir_trade_endpoint, methods=['DELETE'])
 
+# Criar tabelas no banco de dados
+criar_tabelas()
+
 # Definir um layout simples (substitua isso pelo seu próprio layout)
 app.layout = html.Div("Olá, Mundo!")
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    server.run(debug=True)

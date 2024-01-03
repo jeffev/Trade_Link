@@ -2,5 +2,4 @@ from backend.server import app, server
 from backend import callbacks
 
 if __name__ == '__main__':
-    # Iniciar o servidor Flask e Dash
-    app.run_server(debug=True)
+    server.run(debug=True)
