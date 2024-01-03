@@ -1,4 +1,4 @@
-from backend.server import app, server
+from backend.server import app
 from backend import callbacks
 
 if __name__ == '__main__':

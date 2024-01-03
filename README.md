@@ -23,24 +23,37 @@ O frontend está dividido nos diretórios `/frontend/assets` e `/frontend/templa
 - `/assets`: Contém arquivos estáticos, como CSS, imagens e JavaScript.
 - `/templates`: Armazena os arquivos HTML correspondentes a cada página da aplicação.
 
+
 ## Como Executar o Projeto
 
 1. Certifique-se de ter o Python instalado em sua máquina.
 
-2. Instale as dependências necessárias executando o seguinte comando no terminal:
+2. Instale as dependências necessárias executando o seguinte comando no terminal na raiz do projeto:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-3. Navegue até o diretório `/backend` e execute o arquivo `server.py` para iniciar o servidor:
+3. Crie um arquivo chamado `.env` na raiz do projeto e adicione as configurações necessárias, por exemplo:
 
-    ```bash
-    cd backend
-    python server.py
+    ```plaintext
+    DB_NAME=TradeLink
+    DB_USER=seu_usuario
+    DB_PASSWORD=sua_senha
+    DB_HOST=localhost
+    DB_PORT=5432
     ```
 
-4. Abra um navegador e acesse `http://127.0.0.1:8050/` para acessar a aplicação.
+   Substitua "seu_usuario" e "sua_senha" pelas credenciais do seu banco de dados PostgreSQL.
+
+4. Execute o arquivo `run.py` para iniciar o servidor:
+
+    ```bash
+    python run.py
+    ```
+
+   Agora, o aplicativo estará acessível em [http://127.0.0.1:8050](http://127.0.0.1:8050).
+
 
 ## Contribuição
 

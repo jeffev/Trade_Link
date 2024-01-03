@@ -1,14 +1,16 @@
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.entities.entidade_trade import Base, Trade
+from backend.entities.entidade_trade import Base
+import os
+from dotenv import load_dotenv
 
 # Configurações de conexão com o banco de dados PostgreSQL
 db_config = {
-    'dbname': 'TradeLink',
-    'user': 'postgres',
-    'password': '123456',
-    'host': 'localhost',
-    'port': '5432',
+    'dbname': os.getenv('DB_NAME'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'host': os.getenv('DB_HOST'),
+    'port': os.getenv('DB_PORT'),
 }
 
 # Conectar ao banco de dados

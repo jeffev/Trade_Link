@@ -1,6 +1,5 @@
 import dash
 import dash_bootstrap_components as dbc
-from flask import Flask
 from dash import html
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, MetaData
@@ -24,7 +23,6 @@ Base = declarative_base(metadata=MetaData())
 
 # Inicializar o aplicativo Dash
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = Flask(__name__)
 
 # Adicionar os blueprints dos endpoints relacionados aos trades
 app.server.add_url_rule('/api/trades', view_func=criar_trade_endpoint, methods=['POST'])
