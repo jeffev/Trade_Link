@@ -41,8 +41,28 @@ def obter_trades_endpoint():
     try:
         trades = obter_trades()
 
-        if trades is not None:
-            trades_json = [{'id': trade.id, 'data': str(trade.Data), 'ativo': trade.Ativo, 'observacao': trade.Observacao} for trade in trades]
+        if trades:
+            trades_json = [{
+                'id': trade.id,
+                'data': str(trade.Data),
+                'duracao': trade.Duracao,
+                'ativo': trade.Ativo,
+                'tipo': trade.Tipo,
+                'qtde': trade.Qtde,
+                'direction': trade.Direction,
+                'tendencia': trade.Tendencia,
+                'sentimento': trade.Sentimento,
+                'execucao': trade.Execucao,
+                'erro': trade.Erro,
+                'timeframe': trade.TimeFrame,
+                'setup': trade.Setup,
+                'pontos': trade.Pontos,
+                'valor': trade.Valor,
+                'percentual': trade.Percentual,
+                'imagem': trade.Imagem,
+                'observacao': trade.Observacao
+            } for trade in trades]
+
             return jsonify({'trades': trades_json})
         else:
             return jsonify({'error': 'Nenhum trade encontrado'}), 404

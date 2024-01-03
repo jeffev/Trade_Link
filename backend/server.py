@@ -27,11 +27,11 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = Flask(__name__)
 
 # Adicionar os blueprints dos endpoints relacionados aos trades
-server.add_url_rule('/api/trades', view_func=criar_trade_endpoint, methods=['POST'])
-server.add_url_rule('/api/trades', view_func=obter_trades_endpoint, methods=['GET'])
-server.add_url_rule('/api/trades/<int:trade_id>', view_func=obter_trade_por_id_endpoint, methods=['GET'])
-server.add_url_rule('/api/trades/<int:trade_id>', view_func=atualizar_trade_endpoint, methods=['PUT'])
-server.add_url_rule('/api/trades/<int:trade_id>', view_func=excluir_trade_endpoint, methods=['DELETE'])
+app.server.add_url_rule('/api/trades', view_func=criar_trade_endpoint, methods=['POST'])
+app.server.add_url_rule('/api/trades', view_func=obter_trades_endpoint, methods=['GET'])
+app.server.add_url_rule('/api/trades/<int:trade_id>', view_func=obter_trade_por_id_endpoint, methods=['GET'])
+app.server.add_url_rule('/api/trades/<int:trade_id>', view_func=atualizar_trade_endpoint, methods=['PUT'])
+app.server.add_url_rule('/api/trades/<int:trade_id>', view_func=excluir_trade_endpoint, methods=['DELETE'])
 
 # Criar tabelas no banco de dados
 criar_tabelas()
@@ -40,4 +40,4 @@ criar_tabelas()
 app.layout = html.Div("Olá, Mundo!")
 
 if __name__ == "__main__":
-    server.run(debug=True)
+    app.run_server(debug=True)
