@@ -1,4 +1,5 @@
-from entities.entidade_trade import Trade, SessionLocal
+from backend.database import SessionLocal
+from backend.entities.entidade_trade import Trade
 
 def criar_trade(data, duracao, ativo, tipo, qtde, direction, tendencia, sentimento, execucao, erro, timeframe, setup, pontos, valor, percentual, imagem, observacao):
     novo_trade = Trade(
